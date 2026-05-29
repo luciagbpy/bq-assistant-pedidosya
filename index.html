@@ -15,15 +15,12 @@ body{font-family:'Nunito',sans-serif;background:#f4f4f5;min-height:100vh;padding
 .logo span{color:#fff;font-size:20px;font-weight:700}
 .hdr-text h2{font-size:18px;font-weight:700;color:var(--text);margin-bottom:1px}
 .hdr-text p{font-size:12px;color:var(--gray3)}
-
-/* TEAM SELECTOR */
 .team-selector-wrap{margin-bottom:1.5rem}
 .team-label{font-size:11px;font-weight:700;color:var(--gray3);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;display:block}
 .team-selector{display:flex;gap:8px;flex-wrap:wrap}
 .team-btn{padding:8px 18px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1.5px solid var(--gray2);background:#fff;color:var(--gray3);font-family:'Nunito',sans-serif;transition:all .15s}
 .team-btn:hover{border-color:var(--peya);color:var(--peya)}
 .team-btn.active{background:var(--peya);color:#fff;border-color:var(--peya)}
-
 .tabs{display:flex;gap:2px;background:var(--gray);border-radius:10px;padding:4px;margin-bottom:1.5rem}
 .tab{flex:1;padding:8px 4px;font-size:11px;font-weight:700;cursor:pointer;border:none;background:none;color:var(--gray3);border-radius:7px;transition:all .15s;font-family:'Nunito',sans-serif;text-align:center}
 .tab:hover{color:var(--text)}
@@ -39,11 +36,8 @@ textarea::placeholder{color:#a1a1aa;font-size:12px}
 .btn-pri:active{transform:scale(.98)}
 .btn-sec{padding:9px 16px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--gray2);background:#fff;color:var(--text2);font-family:'Nunito',sans-serif}
 .btn-sec:hover{background:var(--gray)}
-.ex-btn{display:block;width:100%;text-align:left;padding:9px 12px;margin-bottom:5px;border-radius:8px;border:1.5px solid var(--gray2);background:#fff;color:var(--text2);font-size:12px;cursor:pointer;transition:all .1s;line-height:1.45;font-family:'Nunito',sans-serif;font-weight:500}
+.ex-btn{display:block;width:100%;text-align:left;padding:9px 12px;margin-bottom:5px;border-radius:8px;border:1.5px solid var(--gray2);background:#fff;color:var(--text2);font-size:12px;cursor:pointer;transition:all .1s;line-height:1.45;font-family:'Nunito',sans-serif;font-weight:500;white-space:pre-wrap}
 .ex-btn:hover{border-color:var(--peya);color:var(--peya);background:var(--peya-light)}
-.chips{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
-.chip{font-size:11px;padding:4px 10px;border-radius:20px;border:1.5px solid var(--gray2);background:#fff;color:var(--gray3);cursor:pointer;transition:all .15s;font-family:'Nunito',sans-serif;font-weight:600}
-.chip.on{background:var(--peya-light);color:var(--peya);border-color:var(--peya-border)}
 .divider{height:1px;background:var(--gray2);margin:.85rem 0}
 .hint{font-size:11px;color:#a1a1aa;margin-top:5px}
 .output{display:none;margin-top:14px;border-radius:10px;border:1.5px solid var(--gray2);overflow:hidden}
@@ -83,13 +77,12 @@ textarea::placeholder{color:#a1a1aa;font-size:12px}
     </div>
   </div>
 
-  <!-- TEAM SELECTOR -->
   <div class="team-selector-wrap">
     <span class="team-label">Seleccioná tu equipo</span>
     <div class="team-selector">
-      <button class="team-btn active" onclick="selectTeam('pricing', this)">💰 Pricing</button>
-      <button class="team-btn" onclick="selectTeam('crm', this)">📣 CRM</button>
-      <button class="team-btn" onclick="selectTeam('marketing', this)">📊 Marketing Strategy</button>
+      <button class="team-btn active" onclick="selectTeam('pricing',this)">💰 Pricing</button>
+      <button class="team-btn" onclick="selectTeam('crm',this)">📣 CRM</button>
+      <button class="team-btn" onclick="selectTeam('marketing',this)">📊 Marketing Strategy</button>
     </div>
   </div>
 
@@ -106,14 +99,13 @@ textarea::placeholder{color:#a1a1aa;font-size:12px}
     <div class="team-badge" id="team-badge">💰 Pricing</div>
     <span class="lbl">ejemplos rápidos</span>
     <div id="examples-container"></div>
-  
-    <span class="lbl">describí lo que necesitás</span>
-    <textarea id="gen-input" rows="3" placeholder="Ej: quiero ver la conversión por time of day en Uruguay en los últimos 30 días..."></textarea>
+    <span class="lbl" style="margin-top:12px">describí lo que necesitás</span>
+    <textarea id="gen-input" rows="4" placeholder="Ej: quiero ver la conversión por time of day en Uruguay en los últimos 30 días..."></textarea>
     <div class="row">
       <button class="btn-pri" onclick="doGenerar()">Generar query</button>
       <button class="btn-sec" onclick="document.getElementById('gen-input').value='';document.getElementById('gen-output').style.display='none'">Limpiar</button>
     </div>
-    <div class="thinking" id="gen-thinking"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span id="gen-thinking-text">Generando query...</span></div>
+    <div class="thinking" id="gen-thinking"><div class="dot"></div><div class="dot"></div><div class="dot"></div><span>Generando query...</span></div>
     <div class="output" id="gen-output">
       <div class="output-hdr">
         <span class="output-lbl">query generado — listo para BigQuery</span>
@@ -244,9 +236,9 @@ textarea::placeholder{color:#a1a1aa;font-size:12px}
       <div class="snip-box">CASE WHEN dp.is_darkstore=TRUE THEN 'DMart' WHEN f.partner.has_peya_shopper IS TRUE THEN 'AAA Shopper' WHEN o.business_type.business_type_name='Market' THEN 'Convenience' ELSE o.business_type.business_type_name END AS vertical</div>
       <div class="snip-label">Tipo de orden</div>
       <div class="snip-box">CASE WHEN o.pickup=True THEN 'pickup' WHEN o.with_logistics=False THEN 'marketplace' WHEN o.with_logistics=True THEN 'logistic' END AS order_type</div>
-      <div class="snip-label">Nombre de país (normalizado)</div>
-      <div class="snip-box">CASE WHEN country_name_en = 'Dominican Republic' THEN 'República Dominicana' WHEN country_name_en = 'Panama' THEN 'Panamá' WHEN country_name_en = 'Peru' THEN 'Perú' ELSE country_name_en END AS country</div>
-      <div class="snip-label">Segmento Plus + QC (Marketing Strategy)</div>
+      <div class="snip-label">Nombre de país normalizado</div>
+      <div class="snip-box">CASE WHEN country_name_en='Dominican Republic' THEN 'República Dominicana' WHEN country_name_en='Panama' THEN 'Panamá' WHEN country_name_en='Peru' THEN 'Perú' ELSE country_name_en END AS country</div>
+      <div class="snip-label">Segmento Plus + QC</div>
       <div class="snip-box">CASE WHEN es_plus=1 AND es_qc=1 THEN 'PLUS_Y_QC' WHEN es_plus=1 AND es_qc=0 THEN 'PLUS_UNICAMENTE' WHEN es_plus=0 AND es_qc=1 THEN 'QC_UNICAMENTE' ELSE 'NINGUNO' END AS segmento</div>
     </div>
   </div>
@@ -256,15 +248,16 @@ textarea::placeholder{color:#a1a1aa;font-size:12px}
 const PASSWORD = "pricing2026";
 const entered = prompt("🔒 BQ Assistant — Ingresá la contraseña:");
 if (entered !== PASSWORD) {
-  document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Nunito,sans-serif;color:#FA0050;font-size:18px;font-weight:700;">Acceso denegado ❌</div>';
-}
+  document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:Nunito,sans-serif;color:#FA0050;font-size:18px;font-weight:700;">Acceso denegado</div>';
+} else {
 
-// ─── DATOS POR EQUIPO ───────────────────────────────────────────────────────
 const TEAMS = {
   pricing: {
     label: "💰 Pricing",
     examples: [
-      { prompt: "Conversión por TOD y ciudad en Colombia últimos 30 días, separando plus de no plus", query: `SELECT
+      {
+        prompt: "Conversión por TOD y ciudad en Colombia últimos 30 días, separando plus de no plus",
+        query: `SELECT
   dps.city_name                                           AS city,
   o.order_hour                                            AS hour_of_day,
   CASE WHEN o.is_user_plus=1 AND o.has_plus_shipping_cost_discount=1 THEN 'plus_order'
@@ -281,8 +274,11 @@ LEFT JOIN \`fulfillment-dwh-production.curated_data_shared.dps_sessions_mapped_t
 WHERE o.registered_date BETWEEN DATE_SUB(CURRENT_DATE(), INTERVAL 30 DAY) AND CURRENT_DATE()
   AND o.country.country_code = 'CO'
 GROUP BY 1,2,3
-ORDER BY city, hour_of_day, is_plus` },
-      { prompt: "Delivery fee promedio y órdenes por vertical en Argentina agrupado por semana", query: `SELECT
+ORDER BY city, hour_of_day, is_plus`
+      },
+      {
+        prompt: "Delivery fee promedio y órdenes por vertical en Argentina agrupado por semana",
+        query: `SELECT
   DATE_TRUNC(o.registered_date, WEEK)                     AS semana,
   CASE WHEN dp.is_darkstore=TRUE THEN 'DMart'
        WHEN f.partner.has_peya_shopper IS TRUE THEN 'AAA Shopper'
@@ -300,8 +296,11 @@ WHERE o.registered_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY)
   AND o.country.country_code = 'AR'
   AND f.order_status = 'CONFIRMED'
 GROUP BY 1,2
-ORDER BY semana DESC, orders DESC` },
-      { prompt: "GMV y órdenes de Pharmacy por ciudad en República Dominicana, últimos 6 meses", query: `SELECT
+ORDER BY semana DESC, orders DESC`
+      },
+      {
+        prompt: "GMV y órdenes de Pharmacy por ciudad en República Dominicana, últimos 6 meses",
+        query: `SELECT
   dps.city_name                                           AS city,
   DATE_TRUNC(o.registered_date, MONTH)                   AS month,
   COUNT(DISTINCT o.order_id)                              AS orders,
@@ -317,8 +316,11 @@ WHERE o.registered_date >= DATE_SUB(CURRENT_DATE(), INTERVAL 6 MONTH)
   AND o.business_type.business_type_name = 'Pharmacy'
   AND f.order_status = 'CONFIRMED'
 GROUP BY 1,2
-ORDER BY month DESC, orders DESC` },
-      { prompt: "Service fee y small order fee promedio por país del último mes, solo órdenes logísticas confirmadas", query: `SELECT
+ORDER BY month DESC, orders DESC`
+      },
+      {
+        prompt: "Service fee y small order fee promedio por país del último mes, solo órdenes logísticas confirmadas",
+        query: `SELECT
   o.country.country_name                                  AS country,
   ROUND(AVG(f.service_fee), 2)                           AS avg_service_fee,
   ROUND(AVG(f.small_order_fee), 2)                       AS avg_small_order_fee,
@@ -334,14 +336,25 @@ WHERE o.registered_date BETWEEN DATE_TRUNC(DATE_SUB(CURRENT_DATE(), INTERVAL 1 M
   AND o.with_logistics = TRUE
   AND f.order_status = 'CONFIRMED'
 GROUP BY 1
-ORDER BY total_orders DESC` }
+ORDER BY total_orders DESC`
+      }
     ]
   },
 
   crm: {
     label: "📣 CRM",
     examples: [
-      { prompt: "Usuarios que entraron a canvas_id de Braze en un período, con sus órdenes y montos en dólares", query: `WITH
+      {
+        prompt: `Armame una query de los usuarios que entraron a estos canvas_id de Braze desde el 28 de abril de 2026 hasta hace dos días:
+3832964e-e3f3-4df9-844b-365509191238
+96dc8c29-5d01-4090-9d01-2e073f093e11
+6b8cc132-81cf-49fa-96f7-1e3c30d94e5a
+f67347a6-6c6f-43d5-a90f-7547acb97d96
+1af082f5-0301-4021-bdae-8c6a259bae92
+ed4b0b55-1239-42a9-99e9-0ff319dbd096
+f1c42e67-7b1f-402b-8e2a-95c42990a8ec
+Traeme a los usuarios y las órdenes que hayan realizado desde el 1 de enero de 2026 e incluí el cálculo de sus montos en dólares, manteniendolos aunque no hayan realizado ordenes y quedarte solo con el primer registro de usuario y orden durante ese período.`,
+        query: `WITH
 raw AS (
   SELECT DISTINCT
     e.user_id,
@@ -395,8 +408,15 @@ LEFT JOIN \`peya-datamarts-pro.dm_onboarding.orders_objectives\` ob
   ON e.user_id = ob.user_id AND e.order_id = ob.order_id AND ob.react
 WHERE ob.react AND ob.fecha >= '2026-01-01'
 GROUP BY ALL
-ORDER BY 1,2,3` },
-      { prompt: "Onboarding y retención de adquisiciones por canvas de Braze, abierto por órdenes acumuladas a 5, 10 y 15 días y retención a 30, 60 y 90 días", query: `WITH
+ORDER BY 1,2,3`
+      },
+      {
+        prompt: `Armame una query para medir el onboarding y la retención de los usuarios nuevos (adquisiciones) de Argentina y Chile que entraron a estos canvas_id desde 21 de noviembre de 2025:
+83ccb59d-0dda-4b2c-9a37-dc0a0d4dd107
+185756f3-8cd5-4427-95f1-1ad915b9f8a4
+Traeme el nombre del canvas, el último step por el que pasó y el nombre de la variante.
+Abrí los datos agrupando según cuántas órdenes acumuladas hicieron a los 5, 10 y 15 días (mostrando el número exacto si es de 0 a 4, u 'Onboarded' si son más). Para cada uno de estos grupos, mostrá cuántos usuarios nuevos entraron en total y cuántos de ellos ya se encontraban onboardeados (con 5 o más órdenes) al cumplir los 30, 60 y 90 días desde su primera compra.`,
+        query: `WITH
 orders_table AS (
   SELECT
     o.order_id,
@@ -447,7 +467,7 @@ braze AS (
 )
 SELECT
   canvas_name, last_step, namesplit,
-  CASE WHEN ct_orders_by_day_5  <= 4 THEN CAST(ct_orders_by_day_5 AS STRING)  WHEN ct_orders_by_day_5  > 4 THEN 'Onboarded' ELSE 'unknown' END AS day_5_orders,
+  CASE WHEN ct_orders_by_day_5  <= 4 THEN CAST(ct_orders_by_day_5  AS STRING) WHEN ct_orders_by_day_5  > 4 THEN 'Onboarded' ELSE 'unknown' END AS day_5_orders,
   CASE WHEN ct_orders_by_day_10 <= 4 THEN CAST(ct_orders_by_day_10 AS STRING) WHEN ct_orders_by_day_10 > 4 THEN 'Onboarded' ELSE 'unknown' END AS day_10_orders,
   CASE WHEN ct_orders_by_day_15 <= 4 THEN CAST(ct_orders_by_day_15 AS STRING) WHEN ct_orders_by_day_15 > 4 THEN 'Onboarded' ELSE 'unknown' END AS day_15_orders,
   COUNT(DISTINCT a.user_id)                              AS ct_acqs,
@@ -460,14 +480,17 @@ WHERE acq_date BETWEEN '2025-11-21' AND DATE_SUB(CURRENT_DATE(), INTERVAL 90 DAY
   AND country_name IN ('Argentina','Chile')
   AND canvas_id IN ('83ccb59d-0dda-4b2c-9a37-dc0a0d4dd107','185756f3-8cd5-4427-95f1-1ad915b9f8a4')
 GROUP BY 1,2,3,4,5,6
-ORDER BY 1,2,3,4,5,6` }
+ORDER BY 1,2,3,4,5,6`
+      }
     ]
   },
 
   marketing: {
     label: "📊 Marketing Strategy",
     examples: [
-      { prompt: "Evolución de frecuencia mensual (orders/users) por país y LATAM, abierta en 4 segmentos: PLUS_Y_QC, PLUS_UNICAMENTE, QC_UNICAMENTE y NINGUNO", query: `DECLARE START_DATE DATE DEFAULT '2025-01-01';
+      {
+        prompt: "Armame una query para ver la evolución de la frecuencia mensual (orders/users) por país y LATAM. Abrila en 4 segmentos mutuamente excluyentes: 'PLUS_Y_QC', 'PLUS_UNICAMENTE', 'QC_UNICAMENTE' y 'NINGUNO'.",
+        query: `DECLARE START_DATE DATE DEFAULT '2025-01-01';
 DECLARE FINAL_DATE DATE DEFAULT '2026-05-31';
 
 WITH
@@ -506,9 +529,9 @@ processed_segments AS (
     SUM(total_orders) AS orders, COUNT(DISTINCT user_id) AS users
   FROM user_monthly_activity GROUP BY 1,2,3
   UNION ALL
-  SELECT 'LATAM' AS country, calendar_month, segmento,
+  SELECT 'LATAM', calendar_month, segmento,
     SUM(total_orders) AS orders, COUNT(DISTINCT user_id) AS users
-  FROM user_monthly_activity GROUP BY 1,2,3
+  FROM user_monthly_activity GROUP BY 2,3
 )
 SELECT
   country                                                 AS Country,
@@ -519,8 +542,11 @@ FROM processed_segments
 ORDER BY
   CASE WHEN country = 'LATAM' THEN 2 ELSE 1 END,
   country ASC, calendar_month ASC,
-  CASE WHEN segmento='PLUS_Y_QC' THEN 1 WHEN segmento='PLUS_UNICAMENTE' THEN 2 WHEN segmento='QC_UNICAMENTE' THEN 3 ELSE 4 END ASC` },
-      { prompt: "Usuarios adquiridos en la vertical Groceries durante 2026, abierto por mes y por país", query: `DECLARE start_date DATE DEFAULT '2026-01-01';
+  CASE WHEN segmento='PLUS_Y_QC' THEN 1 WHEN segmento='PLUS_UNICAMENTE' THEN 2 WHEN segmento='QC_UNICAMENTE' THEN 3 ELSE 4 END ASC`
+      },
+      {
+        prompt: "Necesito una query para ver la cantidad de usuarios adquiridos en la vertical de Groceries durante el 2026, abierto por mes y por país.",
+        query: `DECLARE start_date DATE DEFAULT '2026-01-01';
 DECLARE final_date DATE DEFAULT CURRENT_DATE();
 
 WITH
@@ -540,8 +566,11 @@ SELECT
   COUNT(DISTINCT user_id)                                AS Acquired_Users_Groceries
 FROM groceries_acquisitions
 GROUP BY ALL
-ORDER BY Country ASC, Month ASC` },
-      { prompt: "Inversión en euros por palanca de incentivos (ILD Food, QC, MFO, Bines, Pickup) por país y trimestre, últimos 12 meses cerrados con totales LATAM", query: `DECLARE START_DATE DATE DEFAULT DATE_SUB(DATE_TRUNC(CURRENT_DATE(), QUARTER), INTERVAL 12 MONTH);
+ORDER BY Country ASC, Month ASC`
+      },
+      {
+        prompt: "Armame una query para ver la inversión en euros de peya, vfd & third party en nuestras palancas de incentivos (ILD Food, QC, MFO, Bines y Pickup) abierta por país y por trimestre. Necesito que el rango tome dinámicamente los últimos 12 meses completos (solo Qs cerrados hacia atrás), con formato 'Q1 2026' y que incluya los totales a nivel LATAM.",
+        query: `DECLARE START_DATE DATE DEFAULT DATE_SUB(DATE_TRUNC(CURRENT_DATE(), QUARTER), INTERVAL 12 MONTH);
 DECLARE FINAL_DATE DATE DEFAULT DATE_SUB(DATE_TRUNC(CURRENT_DATE(), QUARTER), INTERVAL 1 DAY);
 
 WITH
@@ -553,25 +582,114 @@ proxy AS (
 ),
 ILD_food AS (
   SELECT DISTINCT
-    CASE WHEN f.location.country_name_en='Dominican Republic' THEN 'República Dominicana' WHEN f.location.country_name_en='Panama' THEN 'Panamá' WHEN f.location.country_name_en='Peru' THEN 'Perú' ELSE f.location.country_name_en END AS country,
-    'ILD_FOOD' AS discount_type,
-    DATE_TRUNC(a.registered_date, QUARTER) AS quarter_date,
-    COUNT(DISTINCT a.order_id) AS ordenes_totales_incentivadas,
-    SUM(paid_by_company / monthly_rate_eu) AS paid_by_company,
-    SUM(vfd / monthly_rate_eu) AS paid_by_partner,
-    SUM(paid_by_3party / monthly_rate_eu) AS paid_by_3party
+    CASE WHEN f.location.country_name_en='Dominican Republic' THEN 'República Dominicana'
+         WHEN f.location.country_name_en='Panama' THEN 'Panamá'
+         WHEN f.location.country_name_en='Peru' THEN 'Perú'
+         ELSE f.location.country_name_en END               AS country,
+    'ILD_FOOD'                                             AS discount_type,
+    DATE_TRUNC(a.registered_date, QUARTER)                AS quarter_date,
+    COUNT(DISTINCT a.order_id)                            AS ordenes_totales_incentivadas,
+    COUNT(DISTINCT CASE WHEN paid_by_company > 0 THEN a.order_id END) AS ordenes_incentivadas_peya,
+    SUM(paid_by_company / monthly_rate_eu)                AS paid_by_company,
+    SUM(vfd / monthly_rate_eu)                            AS paid_by_partner,
+    SUM(paid_by_3party / monthly_rate_eu)                 AS paid_by_3party
   FROM \`peya-bi-tools-pro.il_core.order_incentives\` a
   LEFT JOIN \`peya-datamarts-pro.dm_order_profitability.fact_order_profitability\` f ON f.order_id = a.order_id
   LEFT JOIN proxy ON proxy.order_id = a.order_id
   WHERE a.discount_type = 'ITEM_LEVEL_DISCOUNT'
+    AND campaign_id NOT IN ('fdebec13-d07d-4dc1-afe5-2d2b1fc806fb','af21f1bc-866c-49fb-84ac-db831c5d2c56')
     AND a.registered_date BETWEEN START_DATE AND FINAL_DATE
+    AND a.country_id IS NOT NULL
     AND business_type IN ('COFFEE','RESTAURANT')
   GROUP BY ALL
 ),
+MFO AS (
+  SELECT DISTINCT
+    CASE WHEN f.location.country_name_en='Dominican Republic' THEN 'República Dominicana'
+         WHEN f.location.country_name_en='Panama' THEN 'Panamá'
+         WHEN f.location.country_name_en='Peru' THEN 'Perú'
+         ELSE f.location.country_name_en END               AS country,
+    'MFO'                                                  AS discount_type,
+    DATE_TRUNC(inc.registered_date, QUARTER)              AS quarter_date,
+    COUNT(DISTINCT inc.order_id)                          AS ordenes_totales_incentivadas,
+    COUNT(DISTINCT CASE WHEN paid_by_company > 0 THEN inc.order_id END) AS ordenes_incentivadas_peya,
+    SUM(IFNULL(inc.paid_by_company,0) / monthly_rate_eu)  AS paid_by_company,
+    SUM(IFNULL(vfd,0) / monthly_rate_eu)                  AS paid_by_partner,
+    SUM(IFNULL(inc.paid_by_3party,0) / monthly_rate_eu)   AS paid_by_3party
+  FROM \`peya-bi-tools-pro.il_core.order_incentives\` AS inc
+  LEFT JOIN \`peya-datamarts-pro.dm_order_profitability.fact_order_profitability\` f ON f.order_id = inc.order_id
+  LEFT JOIN proxy ON proxy.order_id = inc.order_id
+  WHERE inc.campaign_id IN ('fdebec13-d07d-4dc1-afe5-2d2b1fc806fb','af21f1bc-866c-49fb-84ac-db831c5d2c56')
+    AND inc.registered_date BETWEEN START_DATE AND FINAL_DATE
+  GROUP BY ALL
+),
+BINES AS (
+  SELECT DISTINCT
+    CASE WHEN f.location.country_name_en='Dominican Republic' THEN 'República Dominicana'
+         WHEN f.location.country_name_en='Panama' THEN 'Panamá'
+         WHEN f.location.country_name_en='Peru' THEN 'Perú'
+         ELSE f.location.country_name_en END               AS country,
+    'BINES'                                                AS discount_type,
+    DATE_TRUNC(a.registered_date, QUARTER)                AS quarter_date,
+    COUNT(DISTINCT a.order_id)                            AS ordenes_totales_incentivadas,
+    COUNT(DISTINCT CASE WHEN paid_by_company > 0 THEN a.order_id END) AS ordenes_incentivadas_peya,
+    SUM(paid_by_company / monthly_rate_eu)                AS paid_by_company,
+    SUM(paid_by_partner / monthly_rate_eu)                AS paid_by_partner,
+    SUM(paid_by_3party / monthly_rate_eu)                 AS paid_by_3party
+  FROM \`peya-bi-tools-pro.il_core.order_incentives\` a
+  LEFT JOIN \`peya-datamarts-pro.dm_order_profitability.fact_order_profitability\` f ON f.order_id = a.order_id
+  WHERE discount_type = 'PAYMENT_METHOD'
+    AND a.registered_date BETWEEN START_DATE AND FINAL_DATE
+    AND f.location.country_name_en IS NOT NULL
+  GROUP BY ALL
+),
+PICKUP AS (
+  SELECT DISTINCT
+    CASE WHEN f.location.country_name_en='Dominican Republic' THEN 'República Dominicana'
+         WHEN f.location.country_name_en='Panama' THEN 'Panamá'
+         WHEN f.location.country_name_en='Peru' THEN 'Perú'
+         ELSE f.location.country_name_en END               AS country,
+    'PICKUP'                                               AS discount_type,
+    DATE_TRUNC(a.registered_date, QUARTER)                AS quarter_date,
+    COUNT(DISTINCT a.order_id)                            AS ordenes_totales_incentivadas,
+    COUNT(DISTINCT CASE WHEN paid_by_company > 0 THEN a.order_id END) AS ordenes_incentivadas_peya,
+    SUM(paid_by_company / monthly_rate_eu)                AS paid_by_company,
+    SUM(vfd / monthly_rate_eu)                            AS paid_by_partner,
+    SUM(paid_by_3party / monthly_rate_eu)                 AS paid_by_3party
+  FROM \`peya-bi-tools-pro.il_core.order_incentives\` a
+  LEFT JOIN \`peya-datamarts-pro.dm_order_profitability.fact_order_profitability\` f ON f.order_id = a.order_id
+  LEFT JOIN proxy ON proxy.order_id = a.order_id
+  WHERE a.discount_type = 'PICKUP'
+    AND campaign_id NOT IN ('68d41f96-82ee-46d1-9e95-9214ea5bb7c8')
+    AND a.registered_date BETWEEN START_DATE AND FINAL_DATE
+    AND a.country_id IS NOT NULL
+  GROUP BY ALL
+),
+ILD_QC AS (
+  SELECT
+    INITCAP(country_name)                                 AS country,
+    'ILD_QC'                                              AS discount_type,
+    DATE_TRUNC(month_date, QUARTER)                       AS quarter_date,
+    COUNT(DISTINCT order_id)                              AS ordenes_totales_incentivadas,
+    COUNT(DISTINCT CASE WHEN inv_peya_total > 0 THEN order_id END) AS ordenes_incentivadas_peya,
+    SUM(inv_peya_total)                                   AS paid_by_company,
+    SUM(inv_partner_total)                                AS paid_by_partner,
+    0                                                     AS paid_by_3party
+  FROM \`peya-food-and-groceries.automated_tables_reports.qc_CRM_order\`
+  WHERE month_date BETWEEN START_DATE AND FINAL_DATE
+    AND is_hit_order = true
+  GROUP BY ALL
+),
 investment_report AS (
-  SELECT country, quarter_date, discount_type AS incentivos, SUM(ordenes_totales_incentivadas) AS total_orders, SUM(paid_by_company) AS peya_spend, SUM(paid_by_partner) AS vfd, SUM(paid_by_3party) AS paid_by_3party FROM ILD_food WHERE country IS NOT NULL GROUP BY 1,2,3
-  UNION ALL
-  SELECT 'LATAM', quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM ILD_food WHERE country IS NOT NULL GROUP BY 2,3
+  SELECT country, quarter_date, discount_type AS incentivos, SUM(ordenes_totales_incentivadas) AS total_orders, SUM(ordenes_incentivadas_peya) AS incentivized_peya, SUM(paid_by_company) AS peya_spend, SUM(paid_by_partner) AS vfd, SUM(paid_by_3party) AS paid_by_3party FROM ILD_food WHERE country IS NOT NULL GROUP BY 1,2,3
+  UNION ALL SELECT 'LATAM', quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM ILD_food WHERE country IS NOT NULL GROUP BY 2,3
+  UNION ALL SELECT country, quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM ILD_QC WHERE country IS NOT NULL GROUP BY 1,2,3
+  UNION ALL SELECT 'LATAM', quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM ILD_QC WHERE country IS NOT NULL GROUP BY 2,3
+  UNION ALL SELECT country, quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM MFO WHERE country IS NOT NULL GROUP BY 1,2,3
+  UNION ALL SELECT country, quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM BINES WHERE country IS NOT NULL GROUP BY 1,2,3
+  UNION ALL SELECT 'LATAM', quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM BINES WHERE country IS NOT NULL GROUP BY 2,3
+  UNION ALL SELECT country, quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM PICKUP WHERE country IS NOT NULL GROUP BY 1,2,3
+  UNION ALL SELECT 'LATAM', quarter_date, discount_type, SUM(ordenes_totales_incentivadas), SUM(ordenes_incentivadas_peya), SUM(paid_by_company), SUM(paid_by_partner), SUM(paid_by_3party) FROM PICKUP WHERE country IS NOT NULL GROUP BY 2,3
 )
 SELECT
   country                                                AS Country,
@@ -583,7 +701,9 @@ SELECT
 FROM investment_report
 ORDER BY
   CASE WHEN country='LATAM' THEN 2 ELSE 1 END,
-  country ASC, quarter_date ASC` }
+  country ASC, quarter_date ASC,
+  CASE WHEN incentivos='ILD_FOOD' THEN 1 WHEN incentivos='ILD_QC' THEN 2 WHEN incentivos='BINES' THEN 3 WHEN incentivos='MFO' THEN 4 WHEN incentivos='PICKUP' THEN 5 ELSE 6 END`
+      }
     ]
   }
 };
@@ -622,7 +742,7 @@ function switchTab(id, btn) {
 function showThinking(id, cb) {
   const el = document.getElementById(id);
   el.style.display = 'flex';
-  setTimeout(() => { el.style.display = 'none'; cb(); }, 1600);
+  setTimeout(() => { el.style.display = 'none'; cb(); }, 1400);
 }
 
 function copyOutput(id, btn) {
@@ -638,7 +758,7 @@ function doGenerar() {
   if (!input) return;
   const team = TEAMS[currentTeam];
   const match = team.examples.find(e => e.prompt === input);
-  const sql = match ? match.query : `-- Query generado para: ${input}\n-- Conectá Gemini API para respuestas dinámicas\nSELECT 'Conectá Gemini para queries dinámicos' AS mensaje`;
+  const sql = match ? match.query : `-- Query para: ${input}\n-- Conectá Gemini API para respuestas dinámicas`;
   showThinking('gen-thinking', () => {
     document.getElementById('gen-code').textContent = sql;
     document.getElementById('gen-output').style.display = 'block';
@@ -649,11 +769,8 @@ function doCorregir() {
   const q = document.getElementById('corr-query').value.trim();
   if (!q) return;
   showThinking('corr-thinking', () => {
-    document.getElementById('corr-explanation').innerHTML = '<strong>Problemas encontrados:</strong> Revisá los paths completos de las tablas, los aliases y los JOINs. Asegurate de usar el formato correcto para campos anidados (ej: <code>o.country.country_name</code>).';
-    document.getElementById('corr-code').textContent = q.replace(/`([^`]+)`/g, (m, p) => {
-      if (!p.includes('.')) return '`peya-bi-tools-pro.il_core.' + p + '`';
-      return m;
-    });
+    document.getElementById('corr-explanation').innerHTML = '<strong>Revisión completada:</strong> Verificá paths completos de tablas, aliases y JOINs. Conectá Gemini API para correcciones dinámicas.';
+    document.getElementById('corr-code').textContent = q;
     document.getElementById('corr-output').style.display = 'block';
   });
 }
@@ -663,8 +780,8 @@ function doModificar() {
   const c = document.getElementById('mod-cambio').value.trim();
   if (!q || !c) return;
   showThinking('mod-thinking', () => {
-    document.getElementById('mod-explanation').innerHTML = '<strong>Cambios aplicados:</strong> ' + c;
-    document.getElementById('mod-code').textContent = q + '\n-- Modificación: ' + c;
+    document.getElementById('mod-explanation').innerHTML = '<strong>Modificación solicitada:</strong> ' + c + '. Conectá Gemini API para modificaciones dinámicas.';
+    document.getElementById('mod-code').textContent = q;
     document.getElementById('mod-output').style.display = 'block';
   });
 }
@@ -672,24 +789,15 @@ function doModificar() {
 function doExplicar() {
   const q = document.getElementById('exp-query').value.trim();
   if (!q) return;
-  const hasBraze = q.includes('braze');
-  const hasOrders = q.includes('fact_orders');
-  const hasIncentives = q.includes('order_incentives');
-  let explanation = '<p style="margin-bottom:10px"><strong>¿Qué hace este query?</strong></p>';
-  if (hasBraze) explanation += '<p style="margin-bottom:8px">Consulta eventos de Braze para analizar el comportamiento de usuarios en canvases de comunicación.</p>';
-  if (hasOrders) explanation += '<p style="margin-bottom:8px">Usa <code>fact_orders</code> como tabla base para obtener información de órdenes por usuario.</p>';
-  if (hasIncentives) explanation += '<p style="margin-bottom:8px">Analiza inversión en incentivos cruzando <code>order_incentives</code> con datos de profitability.</p>';
-  explanation += '<p style="margin-top:8px;color:#9ca3af;font-size:12px">Conectá Gemini API para explicaciones detalladas y dinámicas.</p>';
   showThinking('exp-thinking', () => {
-    document.getElementById('exp-text').innerHTML = explanation;
+    document.getElementById('exp-text').innerHTML = '<p>Conectá Gemini API para explicaciones dinámicas de cualquier query.</p>';
     document.getElementById('exp-output').style.display = 'block';
   });
 }
 
-// Inicializar con ejemplos de Pricing
 renderExamples('pricing');
-document.querySelectorAll('.chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('on')));
+
+} // end password check
 </script>
 </body>
 </html>
-ENDOFFILE
